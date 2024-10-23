@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Danfo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=hotel_class" />
+    <title>Loop Station</title>
+    <style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background: lightgrey;
+        overflow: hidden;
+    }
+
+    h1 {
+        width: 220px;
+        margin: 10px 20px;
+        font-size: 4.1rem;
+        font-family: "Danfo", serif;
+        color: blue;
+    }
+
+    p {
+        margin: 20px;
+        font-size: 1rem;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        color: #000fff;
+        text-align: right;
+    }
+
+    .text {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #controls {
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    button {
+        width: 100px;
+        height: 50px;
+        line-height: 1em;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        border-radius: 50%;
+        box-shadow: rgba(0, 15, 255, 1) 5px 5px, rgba(0, 15, 255, 0.6) 10px 10px, rgba(0, 15, 255, 0.4) 15px 15px, rgba(0, 15, 255, 0.2) 20px 20px, rgba(0, 15, 255, 0.1) 25px 25px;
+        margin-bottom: 24px;
+    }
+
+    button:active {
+        transform: scale(0.9);  /* 버튼이 눌리는 듯한 크기 축소 */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);  /* 눌렸을 때 그림자 변화 */
+    }
+
+    #visualizers-container {
+        position: absolute;
+        top: 0;
+        left: 220px; /* 텍스트를 덮지 않도록 왼쪽 220px 비워둠 */
+        width: calc(100% - 220px);
+        height: 100%;
+        display: flex;
+        flex-direction: row; /* 가로로 쌓이도록 설정 */
+    }
+
+    .visualizer {
+        flex-grow: 1;
+        height: 100%;
+        background: rgba(0, 0, 255, 0.1);
+        border-right: 1px solid lightgrey;
+    }
+
+    canvas {
+        width: 100%;
+        height: 100%;
+        border: 1px solid #000fff;
+    }
+
+    .hover-box {
+            position: relative;            
+            margin-left: 30px;
+            width: 170px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: "Poppins", sans-serif;
+            font-weight: 600;
+            color: black;
+            text-decoration: underline;
+        }
+
+    .tooltip {
+            display: none;
+            position: absolute;
+            top: -15px;
+            left: 143%;
+            transform: translateX(-50%);
+            padding: 10px;
+            background-color: black;
+            color: white;
+            font-size: 1rem;
+            border-radius: 5px;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        .hover-box:hover .tooltip {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="text">
+        <h1>Bro, Make your own sick beat</h1>
+        <p>
+            (((다음주 진행 예정)))<br>1.이 쪽에 악기 멜로디 소리 버튼 넣을 예정(가능하다면)<br>2.비주얼라이저 디자인 디벨롭
+        </p>
+    </div>
+
+    <div class="hover-box">
+        How to play?
+        <span class="material-symbols-outlined">
+        hotel_class
+        </span>
+            <div class="tooltip">
+                (record → Stop) x ∞ → Play
+                <br>
+                Just Repeat this!        
+            </div>
+    </div>
+
+    <div id="controls">
+        <button id="record">Record</button>
+        <button id="stop">Stop</button>
+        <button id="play">Play</button>
+        <button id="deleteLast">Delete Last Layer</button>
+        <button id="deleteAll">Delete All Layers</button>
+    </div>
+
+    <canvas id="visualizer" width="800" height="400"></canvas>
+
+    <div id="visualizers-container"></div>
+    <script src="app.js"></script>
+</body>
+</html>
